@@ -1,0 +1,7 @@
+.entry_button {
+ 
+}
+
+.btn-group>.btn:first-child {
+    margin-left: 50px;
+}
