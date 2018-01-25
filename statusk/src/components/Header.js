@@ -13,8 +13,8 @@ class Header extends Component {
   };
 
     renderContent() {
-      const a= 'b';
-        if(a=='c')
+      
+        
         return (  <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <Link to="account_man"  className="nav-link">Account Manager</Link>
@@ -44,7 +44,7 @@ class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarText">
                   {this.renderContent()}
                   <div className="btn-group">
-                  <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                  <button type="button" className="{}btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
                     Sign-In
                   </button>
                   <div className="dropdown-menu ">
