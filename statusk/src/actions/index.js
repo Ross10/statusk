@@ -1,9 +1,3 @@
-import { EMAIL_CHANGED } from './types';
+export * from './AuthActions';
  
 
-export const emailChanged = (text) => {
-  return {
-    type: EMAIL_CHANGED,
-    payload: text
-  };
-};
