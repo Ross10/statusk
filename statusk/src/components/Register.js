@@ -11,41 +11,55 @@ class Register extends Component {
 
     onEmailChange(event) {
         this.props.emailChanged(event.target.value);
-         console.log("email : ",this.props.email);
+        //  console.log("email : ",this.props.email);
     }
 
     onPasswordChange(event) {
         this.props.passwordChanged(event.target.value);
-         console.log("Password",this.props.password);
+        //  console.log("Password",this.props.password);
     }
 
     onR_PasswordChanged(event) {
         this.props.r_passwordChanged(event.target.value);
-        console.log("r_password",this.props.r_password);
+        // console.log("r_password",this.props.r_password);
     }
 
     onNameChanged(event) {
         this.props.nameChanged(event.target.value);
-        console.log("name", this.props.name)
+        // console.log("name", this.props.name)
     }
 
     saveClientData() {
         //Just the added one!
-        this.props.saveDatatoDB(this.props.email,this.props.name);
+        const { email, password, user, name } = this.props;
+        this.props.saveDatatoDB(email,password,name);
+     
 
     }
+
 
     buttonOrSpinner() {
         console.log("loading is : ", this.props.loading);
         if(this.props.loading) {
             return <Spinner />
         }else{
+            console.log("user",this.props.user);
+            if(this.props.user) {
+           
+            
+                
+            }
             return  <button  onClick={this.saveClientData.bind(this)} className="btn btn-lg btn-primary btn-block" >Submit</button>
         }
+
+        
+      
         
     }
 
     render() {
+
+     
 
         return (
             <div className="container centro"> 
@@ -101,4 +115,4 @@ const mapStateToProps = ({auth}) => {
             };
   };
 
-export default connect(mapStateToProps,{emailChanged, passwordChanged, r_passwordChanged, nameChanged, saveDatatoDB})(Register);
+export default connect(mapStateToProps,{emailChanged, passwordChanged, r_passwordChanged, nameChanged, saveDatatoDB })(Register);

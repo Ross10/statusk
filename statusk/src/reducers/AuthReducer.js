@@ -1,4 +1,4 @@
-import { EMAIL_CHANGED,PASSWORD_CHANGED, R_PASSWORD_CHANGED,NAME_CHANGED,REGISTER_FAILED, REGISTER_SUCCSESS, SAVE_DATA_TO_DB } from '../actions/types';
+import {LOGIN_USER_FAIL,LOGIN_USER,LOGIN_USER_SUCCESS, EMAIL_CHANGED,PASSWORD_CHANGED, R_PASSWORD_CHANGED,NAME_CHANGED,REGISTER_FAILED, REGISTER_SUCCSESS, SAVE_DATA_TO_DB } from '../actions/types';
 
 
 const INITIAL_STATE = {
@@ -34,7 +34,16 @@ export default (state= INITIAL_STATE,action) => {
             return {...state, loading: false, error: "Failed to Register"};
 
         case REGISTER_SUCCSESS:
-            return {...state,loading: false,user: action.payload };
+            return {...state,loading: false,user: action.payload,error:'',email:action.email,name: action.name,password:'',r_password:'' };
+
+        case LOGIN_USER:
+            return { ...state, loading:true, error:''}
+
+        case LOGIN_USER_FAIL:
+            return { ...state, loading:false,error:'Problem with Connecting', password:''}
+
+        case LOGIN_USER_SUCCESS:
+            return { ...state, loading:false, user: action.payload}
         default:
             return state;
     }

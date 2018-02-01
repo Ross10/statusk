@@ -1,38 +1,67 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-
-
-
-
+import { Link, BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import '../style/style.css';
+import Home from './Home';
+
+
+
+
+
+
 
 class Header extends Component {
-  
-  state = {
-    hello : "hello"
-  };
 
     renderContent() {
+      console.log("name is : ",this.props.name);
       
-        
-        return (  <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link to="account_man"  className="nav-link">Account Manager</Link>
-        </li>
-        <li className="nav-item">   
-          <Link to="wish_list" className="nav-link">Wish List</Link>
-        </li>
+        if(this.props.user) {
+          return (  <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link to="account_man"  className="nav-link">Account Manager</Link>
+          </li>
+          <li className="nav-item">   
+            <Link to="wish_list" className="nav-link">Wish List</Link>
+          </li>
+  
+          <li className="nav-item">
+            <Link to="mortgage" className="nav-link">Mortgage</Link>
+          </li>
 
-        <li className="nav-item">
-          <Link to="mortgage" className="nav-link">Mortgage</Link>
-        </li>
-      </ul>);
+          <div className="btn-group right">
+            <button type="button" className= "btn btn-primary dropdown-toggle right_with" data-toggle="dropdown" aria-haspopup="true">
+              Hello {this.props.user.email}
+            </button>
+            <div className="dropdown-menu ">
+              <Link to="logout" className="dropdown-item" >Logout</Link>
+            </div>
+          </div>
+
+        </ul>);
+
+        }else{
+          return (<div className="btn-group right_with ">
+          <button type="button" className= "btn btn-danger dropdown-toggle " data-toggle="dropdown" aria-haspopup="true">
+            Login
+          </button>
+          <div className="dropdown-menu ">
+            <Link to="login" className="dropdown-item" >Login</Link>
+            <div className="dropdown-divider"></div>
+            <Link to="register" className="dropdown-item" >Register</Link>
+          </div>
+        </div> );
+        }
+
   
 
     }
     
 
     render() {
+      if(this.props.user){
+        console.log("user in header is : ",this.props.user.email);
+        
+       }
 
         return (
             <div>
@@ -43,16 +72,19 @@ class Header extends Component {
                 <Link to="/" className="navbar-brand" >Home</Link>
                 <div className="collapse navbar-collapse" id="navbarText">
                   {this.renderContent()}
-                  <div className="btn-group">
-                  <button type="button" className="{}btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                    Sign-In
+
+                  {/* <div className="btn-group">
+                  <button type="button" className={ (this.props.user ? 'btn btn-success dropdown-toggle' : 'btn btn-danger dropdown-toggle')} data-toggle="dropdown" aria-haspopup="true">
+                   {this.props.user ? " hello " + this.props.name : "Login"}
                   </button>
                   <div className="dropdown-menu ">
                     <Link to="login" className="dropdown-item" >Login</Link>
                     <div className="dropdown-divider"></div>
                     <Link to="register" className="dropdown-item" >Register</Link>
                   </div>
-                </div>
+                </div> */}
+                
+                  
                 </div>
               </nav>
             </div>
@@ -63,4 +95,16 @@ class Header extends Component {
     
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+
+  return{
+    user: state.auth.user,
+    name: state.auth.name
+  };
+  
+
+
+
+};
+
+export default connect(mapStateToProps)(Header);

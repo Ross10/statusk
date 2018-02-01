@@ -5,6 +5,13 @@ export const NAME_CHANGED = "NAME_CHANGED";
 export const REGISTER_SUCCSESS = "REGISTER_SUCCSESS";
 export const REGISTER_FAILED = "REGISTER_FAILED";
 export const SAVE_DATA_TO_DB = "SAVE_DATA_TO_DB";
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
+
+
+
+
 
 
 
