@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, BrowserRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../style/style.css';
 import Home from './Home';

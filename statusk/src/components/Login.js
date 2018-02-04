@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { emailChanged, passwordChanged, loginUser } from '../actions/index';
 import Spinner from './Spinner';
+import Home from './Home'; 
 
 
 class Login extends Component {
+
+    componentDidUpdate() {
+        if(this.props.user) {
+            this.props.history.push('/');
+        }
+    }
 
 
     onEmailChange(event) {
@@ -22,8 +29,7 @@ class Login extends Component {
         //Just the added one!
         const { email, password } = this.props;
         this.props.loginUser(email,password);
-     
-
+    
     }
 
 
@@ -70,7 +76,7 @@ class Login extends Component {
                 </Link> */}
                 {/* <Link to={this.props.user ? '/' : '/login'} > */}
                 
-                
+                {/* {this.props.user ? this.props.history.push('/') : '' } */}
 
             </div>
                

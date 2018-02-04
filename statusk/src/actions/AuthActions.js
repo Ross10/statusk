@@ -92,12 +92,13 @@ export const emailChanged = (text) => {
   };
   
   const loginUserSuccess = (dispatch, user) => {
-    const history = createHistory();
-    const path = '/';
-    history.push(path); 
+    
 
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: user
     });
+
+    // const path = '/';
+    // history.push(path); 
   };

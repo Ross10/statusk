@@ -4,6 +4,7 @@ class Home extends Component {
 
 
     render() {
+        console.log("In Home Page");
 
         return (
             <div> Home Page.</div>
