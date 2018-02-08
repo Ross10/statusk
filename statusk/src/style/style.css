@@ -24,6 +24,22 @@
     margin-bottom: 30px;
   }
 
+  .navBar {
+      padding-left: 20px;
+  }
+
+  .ButtonBar {
+      padding-left:850px;
+      
+      
+  }
+
+
+  .center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 
 

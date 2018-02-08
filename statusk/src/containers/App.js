@@ -7,6 +7,8 @@ import Wish_List from '../components/Wish_list';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import Mortgage from '../components/Mortgage';
+import Edit_Details from '../components/Edit_Details';
+
 
 
 
@@ -30,6 +32,8 @@ class App extends Component {
                             <Route exact path="/login" component = { Login }  />
                             <Route exact path="/register" component = { Register }  />
                             <Route exact path="/mortgage" component = { Mortgage }  />
+                            <Route exact path="/edit_details" component = { Edit_Details }  />
+                            
                        
                         
                              
