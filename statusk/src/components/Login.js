@@ -1,8 +1,45 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { emailChanged, passwordChanged, loginUser } from '../actions/index';
+import Spinner from './Spinner';
 
 
 class Login extends Component {
 
+
+    onEmailChange(event) {
+        this.props.emailChanged(event.target.value);
+        //  console.log("email : ",this.props.email);
+    }
+
+    onPasswordChange(event) {
+        this.props.passwordChanged(event.target.value);
+        //  console.log("Password",this.props.password);
+    }
+
+    loginUser() {
+        //Just the added one!
+        const { email, password } = this.props;
+        this.props.loginUser(email,password);
+     
+
+    }
+
+
+    buttonOrSpinner() {
+        console.log("loading is : ", this.props.loading);
+        if(this.props.loading) {
+            return <Spinner />
+        }else{
+          
+            return  <button  onClick={this.loginUser.bind(this)} className="btn btn-lg btn-primary btn-block" >Submit</button>
+        }
+
+        
+      
+        
+    }
 
     render() {
 
@@ -25,6 +62,27 @@ class Login extends Component {
                     </form>
                 </div>
 
+                            <input value={this.props.email} onChange={this.onEmailChange.bind(this)} className="form-control" type="email" placeholder="example@gmail.com" autoFocus="" />     
+                    </div>
+                    <div className="form-group">
+                            <label>Password</label>
+                            <input value={this.props.password} className="form-control" onChange={this.onPasswordChange.bind(this)} type="password" placeholder="Password" />
+                    </div>
+
+                    {this.buttonOrSpinner()}
+                    </form>
+                </div>
+
+                {console.log("user in login is : ",this.props.user)}
+               
+               {/* will work wwhen clicking on the "click here" */}
+                {/* <Link to= '/' >
+                click here
+                </Link> */}
+                {/* <Link to={this.props.user ? '/' : '/login'} > */}
+                
+                
+
             </div>
                
         );
@@ -34,3 +92,18 @@ class Login extends Component {
 }
 
 export default Login;
+const mapStateToProps = ({auth}) => {
+    
+   
+     return { email:auth.email,
+              password: auth.password,
+              r_password: auth.r_password,
+              name: auth.name,
+              loading: auth.loading,
+              user: auth.user,
+              error: auth.error
+             };
+   };
+ 
+
+export default connect(mapStateToProps,{ emailChanged, passwordChanged, loginUser })(Login);

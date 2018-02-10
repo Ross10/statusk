@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "firebase": "^4.2.0",
+<<<<<<< HEAD
+=======
+    "history": "^4.7.2",
+>>>>>>> 6576c2cca14e41d635fde145d5ad2f9eb375561d
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",

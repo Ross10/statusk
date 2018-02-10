@@ -27,25 +27,40 @@ class Register extends Component {
     onNameChanged(event) {
         this.props.nameChanged(event.target.value);
         console.log("name", this.props.name)
+        // console.log("name", this.props.name)
     }
 
     saveClientData() {
         //Just the added one!
-        this.props.saveDatatoDB(this.props.email,this.props.name);
+        const { email, password, user, name } = this.props;
+        this.props.saveDatatoDB(email,password,name);
+     
 
     }
+
 
     buttonOrSpinner() {
         console.log("loading is : ", this.props.loading);
         if(this.props.loading) {
             return <Spinner />
         }else{
+            console.log("user",this.props.user);
+            if(this.props.user) {
+           
+            
+                
+            }
             return  <button  onClick={this.saveClientData.bind(this)} className="btn btn-lg btn-primary btn-block" >Submit</button>
         }
+
+        
+      
         
     }
 
     render() {
+
+     
 
         return (
             <div className="container centro"> 
@@ -101,4 +116,4 @@ const mapStateToProps = ({auth}) => {
             };
   };
 
-export default connect(mapStateToProps,{emailChanged, passwordChanged, r_passwordChanged, nameChanged, saveDatatoDB})(Register);
+export default connect(mapStateToProps,{emailChanged, passwordChanged, r_passwordChanged, nameChanged, saveDatatoDB })(Register);
