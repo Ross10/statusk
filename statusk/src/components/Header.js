@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
 import { Link, BrowserRouter, Route } from 'react-router-dom';
+=======
+import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
+>>>>>>> 53e32c7113f232980407f2dd2ebcc6e34c41e318
 import { connect } from 'react-redux';
 import '../style/style.css';
 import Home from './Home';
@@ -41,18 +45,24 @@ class Header extends Component {
       
         if(this.props.user) {
           return (  <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
+          <li className="nav-item navBar">
             <Link to="account_man"  className="nav-link">Account Manager</Link>
           </li>
-          <li className="nav-item">   
+          <li className="nav-item navBar">   
             <Link to="wish_list" className="nav-link">Wish List</Link>
           </li>
   
-          <li className="nav-item">
+          <li className="nav-item navBar">
             <Link to="mortgage" className="nav-link">Mortgage</Link>
           </li>
 
-          <div className="btn-group right">
+
+          <li className="nav-item navBar">
+            <Link to="edit_details" className="nav-link">Edit Personals Details</Link>
+          </li>
+
+
+          <div className="btn-group right navBar">
             <button type="button" className= "btn btn-primary dropdown-toggle right_with" data-toggle="dropdown" aria-haspopup="true">
               Hello {this.props.user.email}
             </button>
@@ -64,12 +74,12 @@ class Header extends Component {
         </ul>);
 
         }else{
-          return (<div className="btn-group right_with ">
-          <button type="button" className= "btn btn-danger dropdown-toggle " data-toggle="dropdown" aria-haspopup="true">
+          return (<div className="btn-group ButtonBar ">
+          <button type="button" className= "btn btn-danger dropdown-toggle  " data-toggle="dropdown" aria-haspopup="true">
             Login
           </button>
-          <div className="dropdown-menu ">
-            <Link to="login" className="dropdown-item" >Login</Link>
+          <div className="dropdown-menu ButtonBar ">
+            <Link to="login" className="dropdown-item " >Login</Link>
             <div className="dropdown-divider"></div>
             <Link to="register" className="dropdown-item" >Register</Link>
           </div>
